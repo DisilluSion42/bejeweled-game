@@ -27,33 +27,40 @@ matched items disappear and new items above it fall to fill the gaps.
 Example:
 
 ```
- 🥝 🍓 🥥 🍇 🍊 🍇 🥝 🍇 🍊
+ 🥝 🍓 🥥
+ 🍇 🍊 🍇
+ 🥝 🍇 🍊
 ```
 
 Swapping the middle `🍊` with the `🍇` below it will match three `🍇` in a row.
 
 ```
  🥝 🍓 🥥
-         
  🥝 🍊 🍊
 ```
 
 The `🍇`s disappear new items fall in from the top to fill in the blank spots.
 
 ```
- 🥝 🍋 🍊 🥝 🍓 🥥 🥝 🍊 🍊
+ 🥝 🍋 🍊
+ 🥝 🍓 🥥
+ 🥝 🍊 🍊
 ```
 
 In this case, a new `🥝` fell down, triggering a combo.
 
 ```
-    🍋 🍊 🍓 🥥 🍊 🍊
+ 🍋 🍊
+ 🍓 🥥
+ 🍊 🍊
 ```
 
 Again, new items fall in to replace the completed `🥝`s.
 
 ```
- 🍓 🍋 🍊 🍇 🍓 🥥 🍋 🍊 🍊
+ 🍓 🍋 🍊
+ 🍇 🍓 🥥
+ 🍋 🍊 🍊
 ```
 
 There are no more matches, so the player can take their next turn.
@@ -138,4 +145,3 @@ Valid colors are:
 
 * `Screen.setMessage(msg)` takes in a string to be printed below the grid each
   time it is rendered.
-
