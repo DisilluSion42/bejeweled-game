@@ -26,9 +26,10 @@ class Screen {
 
   static initialized = false;
 
-  static initialize(numRows, numCols) {
-    Screen.numRows = numRows;
-    Screen.numCols = numCols;
+  static initialize() {
+
+    const numRows = Screen.numRows;
+    const numCols = Screen.numCols;
 
     Screen.grid = [];
     Screen.textColors = [];

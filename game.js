@@ -2,4 +2,4 @@
 
 const Bejeweled = require("./class/bejeweled");
 
-bejeweled = new Bejeweled();
+Bejeweled.screenInitialize();
