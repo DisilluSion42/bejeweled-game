@@ -68,7 +68,13 @@ describe ('Cursor', function () {
   it('processes select inputs', function () {
 
     cursor.select();
-    expect()
+    expect([cursor.selectedRow, cursor.selectedCol]).to.eql([0, 0]);
+
+    cursor.right();
+    cursor.down();
+    cursor.select();
+    expect([cursor.selectedRow, cursor.selectedCol]).to.eql([1, 1]);
+
   })
 
 });
