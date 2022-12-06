@@ -65,6 +65,10 @@ describe ('Cursor', function () {
     expect([cursor.row, cursor.col]).to.deep.equal([0, 0]);
   });
 
+  it('processes select inputs', function () {
 
+    cursor.select();
+    expect()
+  })
 
 });

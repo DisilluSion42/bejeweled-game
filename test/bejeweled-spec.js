@@ -22,11 +22,65 @@ describe ('Bejeweled', function () {
   });
 
   // Add tests for a valid swap that matches 3
-  describe("checkForMatches method", () => {
+  describe("getCleared method", () => {
 
     let grid;
 
-    it("should return coordinates of ")
+    it("should return coordinates of three in a row after swap", () => {
+      grid = [['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
+      const coordinates = Bejeweled.getCleared(grid, 1, 0, 'right');
+      expect(coordinates).to.eql([{row: 0, col: 1}, {row:1, col: 1}, {row: 2, col: 1}]);
+    });
+
+    it("should return coordinates of four in a row after swap", () => {
+      grid = [['🍇', '🥝', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
+      const coordinates = Bejeweled.getCleared(grid, 2, 0, 'right');
+      expect(coordinates).to.eql([{row: 1, col: 1}, {row:2, col: 1}, {row: 3, col: 1}, {row: 4, col: 1}]);
+    });
+
+    it("should return coordinates of five in a row after swap", () => {
+      grid = [['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
+      const coordinates = Bejeweled.getCleared(grid, 2, 0, 'right');
+      expect(coordinates).to.eql([{row: 0, col: 1}, {row: 1, col: 1},
+                                  {row: 2, col: 1}, {row: 3, col: 1}, {row: 4, col: 1}]);
+    });
+
+    it("should return coordinates of cross combo after swap", () => {
+      grid = [['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🍇', '🍇', '🍋', '🍓', '🥥', '🥝'],
+              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
+              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
+              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
+      const coordinates = Bejeweled.getCleared(grid, 2, 0, 'right');
+      expect(coordinates).to.eql([{row: 0, col: 1}, {row: 1, col: 1},
+                                  {row: 2, col: 1}, {row: 3, col: 1}, {row: 4, col: 1},
+                                  {row: 2, col: 2}, {row: 2, col: 3}]);
+    });
+
   });
 
   // Add tests for swaps that set up combos
