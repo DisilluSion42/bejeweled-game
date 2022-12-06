@@ -6,10 +6,10 @@ This a command-line Bejeweled game. The default grid is 8x8, in which you can mo
 ## Play the game
 
 Run the codes below in your terminal: 
-'''
+```
   git clone https://github.com/DisilluSion42/bejeweled-game/
   npm install
   node game.js
-'''
+```
 
 Enjoy the game!
