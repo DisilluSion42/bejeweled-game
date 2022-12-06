@@ -28,6 +28,7 @@ class Cursor {
       this.resetBackgroundColor();
       this.row--;
       this.setBackgroundColor();
+      Screen.render();
     }
 
   }
@@ -38,6 +39,7 @@ class Cursor {
       this.resetBackgroundColor();
       this.row++;
       this.setBackgroundColor();
+      Screen.render();
     }
 
   }
@@ -48,6 +50,7 @@ class Cursor {
       this.resetBackgroundColor();
       this.col--;
       this.setBackgroundColor();
+      Screen.render();
     }
 
   }
@@ -58,6 +61,7 @@ class Cursor {
       this.resetBackgroundColor();
       this.col++;
       this.setBackgroundColor();
+      Screen.render();
     }
 
   }

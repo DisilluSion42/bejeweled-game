@@ -21,70 +21,46 @@ describe ('Bejeweled', function () {
 
   });
 
-  // Add tests for a valid swap that matches 3
-  describe("getCleared method", () => {
+  describe("clear method", () => {
 
-    let grid;
-
-    it("should return coordinates of three in a row after swap", () => {
-      grid = [['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
-      const coordinates = Bejeweled.getCleared(grid, 1, 0, 'right');
-      expect(coordinates).to.eql([{row: 0, col: 1}, {row:1, col: 1}, {row: 2, col: 1}]);
-    });
-
-    it("should return coordinates of four in a row after swap", () => {
-      grid = [['🍇', '🥝', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
-      const coordinates = Bejeweled.getCleared(grid, 2, 0, 'right');
-      expect(coordinates).to.eql([{row: 1, col: 1}, {row:2, col: 1}, {row: 3, col: 1}, {row: 4, col: 1}]);
-    });
-
-    it("should return coordinates of five in a row after swap", () => {
-      grid = [['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
-      const coordinates = Bejeweled.getCleared(grid, 2, 0, 'right');
-      expect(coordinates).to.eql([{row: 0, col: 1}, {row: 1, col: 1},
-                                  {row: 2, col: 1}, {row: 3, col: 1}, {row: 4, col: 1}]);
-    });
-
-    it("should return coordinates of cross combo after swap", () => {
-      grid = [['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🍇', '🍇', '🍋', '🍓', '🥥', '🥝'],
-              ['🍓', '🍇', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥'],
-              ['🥝', '🍇', '🥥', '🍋', '🍋', '🍓', '🥥', '🥝'],
-              ['🍇', '🍓', '🍋', '🥥', '🥥', '🍋', '🍋', '🥥']]
-      const coordinates = Bejeweled.getCleared(grid, 2, 0, 'right');
-      expect(coordinates).to.eql([{row: 0, col: 1}, {row: 1, col: 1},
-                                  {row: 2, col: 1}, {row: 3, col: 1}, {row: 4, col: 1},
-                                  {row: 2, col: 2}, {row: 2, col: 3}]);
+    it("should clear 3 or 4 or 5 matched elements to ' '", () => {
+      let grid = [[3, 1, 1, 1, 1, 1, 2],
+                  [4, 1, 6, 6, 6, 7, 8],
+                  [7, 1, 8, 9, 9, 9 ,9],
+                  [1, 1, 3, 4, 5, 6, 7]];
+      Bejeweled.clear(grid);
+      expect(grid).to.eql([ [3, ' ', ' ', ' ', ' ', ' ', 2],
+                            [4, ' ', ' ', ' ', ' ', 7, 8],
+                            [7, ' ', 8, ' ', ' ', ' ' ,' '],
+                            [1, ' ', 3, 4, 5, 6, 7]]);
     });
 
   });
 
-  // Add tests for swaps that set up combos
+  describe("drop method", () => {
 
-  // Add tests to check if there are no possible valid moves
+    it("should drop items into the grid", () => {
+      let grid = [[' ', 2, ' '],
+                  [4, ' ', ' '],
+                  [' ', ' ', ' ']];
+      Bejeweled.drop(grid);
+      grid.forEach(el => {
+        expect(el).to.not.eq(' ');
+      });
+    });
+
+  });
+
+  describe("refill method", () => {
+
+    it("should refill the grid", () => {
+      let grid = [[' ', 2, ' '],
+                  [4, ' ', ' '],
+                  [' ', ' ', ' ']];
+      Bejeweled.refill(grid);
+      expect(Bejeweled.clear(grid)).to.be.false;
+    });
+
+  });
 
 });
